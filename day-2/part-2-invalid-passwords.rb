@@ -4,7 +4,7 @@
 # p file_data
 counter = 0
 
-file_data = File.foreach("part-1-passwords.txt") do |line| 
+file_data = File.foreach("input-passwords.txt") do |line| 
     line = line.split(" ")
     element = line[0].split("-")
     character_count = line[2].count(line[1][0])
