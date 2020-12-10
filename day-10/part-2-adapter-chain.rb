@@ -10,11 +10,9 @@ end
 
 def all_adapter_chains adapters
     adapters.push(0).sort!
-    p adapters
 
     combinations = [0, 0]
     adapters[2] - adapters[0] <= 3 ? combinations.push(1) : combinations.push(0)
-    # adapters[3] - adapters[0] <= 3 ? combinations.push(2) : combinations.push(0)
     adapters.each_with_index do |num, index| 
         sum = 0
         if index > 2
