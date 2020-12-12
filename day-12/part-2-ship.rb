@@ -1,34 +1,23 @@
-COMPAS = ['N', 'E', 'S', 'W']
-
 def drive_ship navigation
-    # p navigation
 
     position = [0, 0]
     waypoint = [10, 1]
-    # facing = 'E'
 
     navigation.each do |instruction|  
+        action = instruction[0]
         move = instruction[1..-1].to_i
-        case instruction[0]
-        when 'N'
-            waypoint[1] += move
-        when 'S'
-            waypoint[1] -= move
-        when 'E'
-            waypoint[0] += move
-        when 'W'
-            waypoint[0] -= move
+        case action
+        when 'N', 'S', 'E', 'W'
+            direction = action == 'E' || action == 'W' ? 0 : 1
+            sign = action == 'N' || action == 'E' ? 1 : -1
+            waypoint[direction] += move * sign
+        when 'L', 'R'
+            direction = action == 'L' ? 0 : 1
+            waypoint.reverse! if move != 180
+            waypoint[direction] *= -1 if move == 90 || move == 180
+            waypoint[(1 - direction).abs] *= -1 if move == 270 || move == 180
         when 'F'
-            position[0] += waypoint[0] * move
-            position[1] += waypoint[1] * move
-        when 'L'
-            waypoint.reverse! if move != 180
-            waypoint[0] *= -1 if move == 90 || move == 180
-            waypoint[1] *= -1 if move == 270 || move == 180
-        when 'R'
-            waypoint.reverse! if move != 180
-            waypoint[1] *= -1 if move == 90 || move == 180
-            waypoint[0] *= -1 if move == 270 || move == 180
+            position = position.each_with_index.map { |pos, index| pos + waypoint[index] * move }
         end
     end
     p position[0].abs + position[1].abs
