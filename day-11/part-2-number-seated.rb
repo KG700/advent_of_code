@@ -14,10 +14,10 @@ def number_seated seat_map
         seat_map.each_with_index do |row, r| 
             row.each_with_index do |seat, c|  
                 if seat == "."
-                    next_map[r][c] = seat if seat == "."
+                    next_map[r][c] = seat
                 else
                     adjacent_seats = visible_seats(r,c, seat_map)
-                    row_changed = (seat == "L" && adjacent_seats.count('#') == 0) || (seat == "#" && adjacent_seats.count('#') >= 5)
+                    row_changed = has_row_changed seat, adjacent_seats
                     if row_changed
                         next_map[r][c] = '#' if seat == "L"
                         next_map[r][c] = 'L' if seat == "#"
@@ -35,7 +35,12 @@ def number_seated seat_map
     seat_map.each { |row| row.each { |seat| count += 1 if seat == '#' }}
     p count
     
+end
 
+def has_row_changed seat, adjacent_seats
+    is_changed = false
+    is_changed = (seat == "L" && adjacent_seats.count('#') == 0) || is_changed
+    is_changed = (seat == "#" && adjacent_seats.count('#') >= 5) || is_changed
 end
 
 def visible_seats r, c, map
