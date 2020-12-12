@@ -41,94 +41,67 @@ end
 def visible_seats r, c, map
     seats = []
 
-    # check right
-    if c < map[0].length - 1
-        ((c + 1)...map[0].length).each do |col|
-            if map[r][col] != '.'
-                seats.push(map[r][col])
-                break
+    directions = ['R', 'D', 'L', 'U', 'RD', 'LD', 'LU', 'RU']
+
+    directions.each do |direction|
+
+        c_max = map[0].length - ((direction.include? 'R') ? 1 : 0)
+        r_max = map.length - ((direction.include? 'D') ? 1 : 0)
+
+        c_min = (direction.include? 'L') ? 0 : -1
+        r_min = (direction.include? 'U') ? 0 : -1
+
+        r_inc = get_r_inc direction
+        c_inc = get_c_inc direction
+
+        edge = get_edge direction, c_max, r_max, c, r
+
+        if c > c_min && c < c_max && r > r_min && r < r_max
+            (1..edge).each do |x|
+                seat = map[r + r_inc * x][c + c_inc * x]
+                if seat != '.'
+                    seats.push(seat)
+                    break
+                end
             end
         end
     end
 
-    # check diagonal right-down
-    if r < map.length - 1 && c < map[0].length - 1
-        edge = [map.length - r - 1, map[0].length - c - 1].min
-
-        (1..edge).each do |x|
-            if map[r + x][c + x] != '.'
-                seats.push(map[r + x][c + x])
-                break
-            end
-        end
-    end
-
-    # check down
-    if r < map.length - 1
-        ((r + 1)...map.length).each do |row|
-            if map[row][c] != '.'
-                seats.push(map[row][c])
-                break
-            end
-        end
-    end
-
-    # check diagonal left-down
-    if r < map.length - 1 && c > 0
-        edge = [map.length - r - 1, c].min
-
-        (1..edge).each do |x|
-            if map[r + x][c - x] != '.'
-                seats.push(map[r + x][c - x])
-                break
-            end
-        end
-    end
-
-    # check left
-    if c > 0
-        (c - 1).downto(0).each do |col|
-            if map[r][col] != '.'
-                seats.push(map[r][col])
-                break
-            end
-        end
-    end
-
-    # check diagonal left-up
-    if c > 0 && r > 0
-        edge = [r, c].min
-
-        (1..edge).each do |x|
-            if map[r - x][c - x] != '.'
-                seats.push(map[r - x][c - x])
-                break
-            end
-        end
-    end
-
-    # check up
-    if r > 0
-        (r - 1).downto(0).each do |row|
-            if map[row][c] != '.'
-                seats.push(map[row][c])
-                break
-            end
-        end
-    end
-
-    # check diagonal right-up
-    if c < map[0].length - 1 && r > 0
-        edge = [r, map[0].length - c - 1].min
-
-        (1..edge).each do |x|
-            if map[r - x][c + x] != '.'
-                seats.push(map[r - x][c + x])
-                break
-            end
-        end
-    end
     return seats
+end
+
+def get_r_inc direction
+    return inc = 1 if direction.include? 'D'
+    return inc = -1 if direction.include? 'U'
+    inc = 0
+end
+
+def get_c_inc direction
+    return inc = 1 if direction.include? 'R'
+    return inc = -1 if direction.include? 'L'
+    inc = 0
+end
+
+def get_edge direction, c_max, r_max, c, r
+    case direction
+        when 'R'
+            edge = c_max - c
+        when 'D'
+            edge = r_max - r
+        when 'L'
+            edge = c
+        when 'U'
+            edge = r
+        when 'RD'
+            edge = [c_max - c, r_max - r].min
+        when 'LD'
+            edge = [c, r_max - r].min
+        when 'LU'
+            edge = [c, r].min
+        when 'RU'
+            edge = [c_max - c, r].min
+        end
+    edge
 end
 
 seat_map = Helper::upload("day-11/seating-data.txt")
