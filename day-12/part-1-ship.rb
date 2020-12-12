@@ -1,34 +1,27 @@
 COMPAS = ['N', 'E', 'S', 'W']
 
 def drive_ship navigation
-    # p navigation
 
     position = [0,0]
     facing = 'E'
 
     navigation.each do |instruction|  
+        action = instruction[0]
         move = instruction[1..-1].to_i
-        case instruction[0]
-        when 'N'
-            position[1] += move
-        when 'S'
-            position[1] -= move
-        when 'E'
-            position[0] += move
-        when 'W'
-            position[0] -= move
+        case action
+        when 'N', 'S', 'E', 'W'
+            direction = action == 'E' || action == 'W' ? 0 : 1
+            sign = action == 'N' || action == 'E' ? 1 : -1
+            position[direction] += move * sign
+        when 'L', 'R'
+            sign = action == 'L' ? -1 : 1
+            facing = COMPAS[(COMPAS.find_index(facing) + (move / 90 * sign)) % 4]
         when 'F'
             direction = facing == 'E' || facing == 'W' ? 0 : 1
             sign = facing == 'S' || facing == 'W' ? -1 : 1
             position[direction] += move * sign
-        when 'L'
-            facing = COMPAS[(COMPAS.find_index(facing) - (move / 90)) % 4]
-        when 'R'
-            facing = COMPAS[(COMPAS.find_index(facing) + (move / 90)) % 4]
         end
-        # p instruction
-        # p facing
-        # p position
+
     end
     p position[0].abs + position[1].abs
 end
