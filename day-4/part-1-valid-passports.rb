@@ -1,3 +1,6 @@
+require_relative '../helper'
+include Helper
+
 class Passport
 
     attr_accessor :byr, :iyr, :eyr, :hgt, :hcl, :ecl, :pid, :cid
@@ -41,7 +44,7 @@ class Passport
 end
 
 def count_valid_passports
-    passport_data = upload("day-4/passport_data.txt")
+    passport_data = Helper::upload("day-4/passport_data.txt")
 
     # Create array of passport objects
     passport_list = []
@@ -55,16 +58,8 @@ def count_valid_passports
 
     # Count valid passports in passport_list
     valid_passports = passport_list.select { |passport| passport.valid? }
-    p valid_passports
     p valid_passports.length
 
-end
-
-def upload file
-    file = File.open(file)
-    file_data = file.readlines.map(&:chomp)
-    file.close
-    file_data
 end
 
 count_valid_passports

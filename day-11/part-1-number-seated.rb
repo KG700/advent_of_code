@@ -1,4 +1,7 @@
 
+require_relative '../helper'
+include Helper
+
 def number_seated seat_map
     seat_map.map! { |row| row.split("")}
     next_map = []
@@ -48,15 +51,7 @@ def adjacent_seats r, c, map
     return seats
 end
 
-
-def upload file
-    file = File.open(file)
-    file_data = file.readlines.map(&:chomp)
-    file.close
-    file_data
-end
-
-seat_map = upload("day-11/seating-data.txt")
+seat_map = Helper::upload("day-11/seating-data.txt")
 
 test_map = [
     "L.LL.LL.LL",

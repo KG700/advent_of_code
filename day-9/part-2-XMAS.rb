@@ -1,4 +1,7 @@
 
+require_relative '../helper'
+include Helper
+
 def continuous_numbers(data, failing_number)
     range_start = 0
     range_end = 0
@@ -10,7 +13,6 @@ def continuous_numbers(data, failing_number)
             running_sum += data[num]
             break if running_sum > failing_number
             if running_sum == failing_number
-                p "found"
                 range_end = range_start + index + 1
                 range_found = true
                 break
@@ -43,15 +45,7 @@ def failing_number(data, trail_number)
     data[xmas_number]
 end
 
-def upload file
-    file = File.open(file)
-    file_data = file.readlines.map(&:chomp)
-    file.close
-    file_data
-end
-
-
 # TEST_DATA = [35 ,20 ,15 ,25 ,47 ,40 ,62 ,55 ,65 ,95 ,102 ,117 ,150 ,182 ,127 ,219 ,299 ,277 ,309 ,576]
-xmas_data = upload("day-9/XMAS-data.txt").map(&:to_i)
+xmas_data = Helper::upload("day-9/XMAS-data.txt").map(&:to_i)
 number = failing_number(xmas_data, 25)
 continuous_numbers(xmas_data, number)

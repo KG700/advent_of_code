@@ -1,3 +1,6 @@
+require_relative '../helper'
+include Helper
+
 COMPAS = ['N', 'E', 'S', 'W']
 
 def drive_ship navigation
@@ -26,14 +29,7 @@ def drive_ship navigation
     p position[0].abs + position[1].abs
 end
 
-def upload file
-    file = File.open(file)
-    file_data = file.readlines.map(&:chomp)
-    file.close
-    file_data
-end
-
-nav_directions = upload("day-12/navigation-data.txt")
+nav_directions = Helper::upload("day-12/navigation-data.txt")
 
 test_nav = [
     "F10",

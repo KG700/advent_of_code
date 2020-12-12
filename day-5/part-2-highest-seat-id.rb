@@ -1,3 +1,6 @@
+require_relative '../helper'
+include Helper
+
 class Seat
 
     attr_reader :binary_id, :column_number, :row_number
@@ -57,7 +60,7 @@ def highest_seat_id
 end
 
 def find_my_seat
-    seats = upload("day-5/seat-data.txt")
+    seats = Helper::upload("day-5/seat-data.txt")
     all_seat_ids = (1..1023).to_a
     seats.map! { |seat| Seat.new(seat) }
 
@@ -69,14 +72,7 @@ def find_my_seat
             all_seat_ids[index + 1] - seat > 1
         end
     end
-    p my_seat
-end
-
-def upload file
-    file = File.open(file)
-    file_data = file.readlines.map(&:chomp)
-    file.close
-    file_data
+    p my_seat[0]
 end
 
 find_my_seat

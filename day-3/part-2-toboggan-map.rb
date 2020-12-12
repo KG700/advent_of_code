@@ -1,10 +1,13 @@
+require_relative '../helper'
+include Helper
+
 def multiplied_trees
     trees = travel_route(1, 1) * travel_route(3, 1) * travel_route(5, 1) * travel_route(7, 1) * travel_route(1, 2)
     p trees
 end
 
 def travel_route(right, down)
-    the_map = upload("day-3/part-1-map.txt")
+    the_map = Helper::upload("day-3/part-1-map.txt")
     x_pos = 0
     tree_count = 0
     the_map.each_with_index.map do |row, index|
@@ -20,13 +23,6 @@ def travel_route(right, down)
         end
     end
     tree_count
-end
-
-def upload file
-    file = File.open(file)
-    file_data = file.readlines.map(&:chomp)
-    file.close
-    file_data
 end
 
 multiplied_trees

@@ -1,7 +1,9 @@
 require "set"
+require_relative '../helper'
+include Helper
 
 def number_of_yes_answers
-    yes_data = upload("day-6/yes-data.txt")
+    yes_data = Helper::upload("day-6/yes-data.txt")
     yes_group = []
 
     group_set = Set.new()
@@ -16,13 +18,6 @@ def number_of_yes_answers
     end
     yes_group.push(group_set.length)
     p yes_group.inject(0){|sum,x| sum + x }
-end
-
-def upload file
-    file = File.open(file)
-    file_data = file.readlines.map(&:chomp)
-    file.close
-    file_data
 end
 
 number_of_yes_answers

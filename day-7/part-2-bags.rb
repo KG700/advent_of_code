@@ -1,5 +1,8 @@
+require_relative '../helper'
+include Helper
+
 def number_of_inner_bags
-    bags_data = upload("day-7/bag-data.txt")
+    bags_data = Helper::upload("day-7/bag-data.txt")
     bags_data.map! { |bag| bag.tr(".", "").split(" contain ").map! { |b| b.split(",").map! { |el| el.split(" ") } } }
     outer_bags = create_outer_bags_hash bags_data
     bags_set = find_bags(outer_bags, "shiny-gold", 1, 0)
@@ -26,13 +29,6 @@ def create_outer_bags_hash bags
         end
     end
     bags_hash
-end
-
-def upload file
-    file = File.open(file)
-    file_data = file.readlines.map(&:chomp)
-    file.close
-    file_data
 end
 
 number_of_inner_bags

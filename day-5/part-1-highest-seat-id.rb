@@ -1,3 +1,6 @@
+require_relative '../helper'
+include Helper
+
 class Seat
 
     attr_reader :binary_id, :column_number, :row_number
@@ -44,7 +47,7 @@ class Seat
 end
 
 def highest_seat_id
-    seats = upload("day-5/seat-data.txt")
+    seats = Helper::upload("day-5/seat-data.txt")
 
     seats.map! { |seat| Seat.new(seat) }
     max_id = 0
@@ -54,13 +57,6 @@ def highest_seat_id
         end
     end
     p max_id
-end
-
-def upload file
-    file = File.open(file)
-    file_data = file.readlines.map(&:chomp)
-    file.close
-    file_data
 end
 
 highest_seat_id

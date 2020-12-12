@@ -1,7 +1,9 @@
 require "set"
+require_relative '../helper'
+include Helper
 
 def first_loop_accumulator
-    commands_data = upload("day-8/game-commands-data.txt")
+    commands_data = Helper::upload("day-8/game-commands-data.txt")
     commands = commands_data.map { |command| command.split(" ")}
     # p commands
 
@@ -21,13 +23,6 @@ def first_loop_accumulator
         end
     end
     p accumulator
-end
-
-def upload file
-    file = File.open(file)
-    file_data = file.readlines.map(&:chomp)
-    file.close
-    file_data
 end
 
 first_loop_accumulator

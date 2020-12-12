@@ -1,7 +1,9 @@
 require "set"
+require_relative '../helper'
+include Helper
 
 def number_of_yes_answers
-    yes_data = upload("day-6/yes-data.txt")
+    yes_data = Helper::upload("day-6/yes-data.txt")
     yes_group = []
 
     number_in_group = 0
@@ -28,13 +30,6 @@ def count_answers set, array, number
     count = 0
     set.each { |answer| count += 1 if array.flatten.count(answer) == number }
     count
-end
-
-def upload file
-    file = File.open(file)
-    file_data = file.readlines.map(&:chomp)
-    file.close
-    file_data
 end
 
 number_of_yes_answers
