@@ -28,7 +28,7 @@ def all_adapter_chains adapters
         end
     end
 
-    p combinations.inject(0){|sum,x| sum + x } + 1
+    p combinations.inject(1){|sum,x| sum + x }
     
 end
 
