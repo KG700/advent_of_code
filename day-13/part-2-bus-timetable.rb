@@ -35,7 +35,6 @@ def find_timestamp timetable
     buses = []
     timetable[1].split(",").map(&:to_i).each_with_index { |bus, index| buses.push({ "index" => index, "num" => bus }) }
     buses.select! { |bus| bus["num"] != 0 }
-    # p buses
 
     # Use Chinese Remainder Theorem:
     # T = index (mod bus_num)
@@ -51,13 +50,8 @@ def find_timestamp timetable
 
     # Use modular inverse to find number to multiply by to give remainder of index
     buses.each do |bus|
-        p bus
         num = bus["mult"] % bus["num"]
-        p inv_mod(num, bus["num"], bus["index"])
         bus["mult"] *= inv_mod(num, bus["num"], bus["index"])
-        # p num
-        # p find_mult(bus["mult"], bus["num"], bus["index"])
-        # bus["mult"] *= find_mult(bus["mult"], bus["num"], bus["index"])
         p bus["mult"] % bus["num"]
         p bus["index"]
     end
@@ -69,11 +63,13 @@ def find_timestamp timetable
         buses_multiplied *= bus["num"]
     end
 
-    buses.each { |bus| p "#{bus["index"]} and #{mult_added_up % bus["num"]}" }
+    # buses.each { |bus| p "#{bus["index"]} and #{mult_added_up % bus["num"]}" }
     p buses
     p mult_added_up
     p buses_multiplied
-    p 8 * buses_multiplied - mult_added_up 
+    p 3 * buses_multiplied - mult_added_up 
+    answer = 8 * buses_multiplied - mult_added_up
+    buses.each { |bus| p "#{bus["index"]} and #{answer % bus["num"]}" }
 
 
 end
@@ -99,6 +95,6 @@ def inv_mod(num, mod, index)
   res
 end
 
-find_timestamp bus_numbers
+find_timestamp test_1_numbers
 # p find_mult(15, 4, 2)
-p inv_mod(146, 60)
+# p inv_mod(146, 60)
