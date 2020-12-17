@@ -115,20 +115,8 @@ def conway_cube data
         break if cycle == 6
     end
 
-    zm1 = 0
-    z0 = 0
-    z1 = 0
-
-    cube.each do |pos, val|
-        if val == "#"
-            zm1 += 1 if pos[2] == -1
-            z0 += 1 if pos[2] == 0
-            z1 += 1 if pos[2] == 1
-        end
-    end
     p count_active(cube)
     
-
 end
 
 def count_active cube
