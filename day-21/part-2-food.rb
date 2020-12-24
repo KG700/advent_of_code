@@ -47,15 +47,11 @@ def find_food_without_allergens data
         break if all_indentified || not_changed
     end
 
-    # total = 0
-    # ingredients.each { |ingredient| total += ingredient_count[ingredient] }
     dangerous_ingredients = ""
     sorted_allergens = allergen_set.to_a.sort
     allergens_hash = {}
     allergens.each { |allergen| allergens_hash[allergen["name"]] = allergen["ingredient"].to_a[0] + ","  }
-    p allergens_hash
     sorted_allergens.each { |allergen| dangerous_ingredients += allergens_hash[allergen] }
-    p dangerous_ingredients
 
 end
 
