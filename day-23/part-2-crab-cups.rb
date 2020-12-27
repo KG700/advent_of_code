@@ -2,41 +2,48 @@ test_input = 389125467
 actual_input = 962713854
 
 def crab_cups input
-    game_input = input.to_s.split("").map(&:to_i).reverse!
+    game_input = input.to_s.split("").map(&:to_i)
     game_input = game_input + (game_input.max + 1).upto(1000000).to_a
-    max_value = game_input.max
-
+    current_cup = game_input.first
+    max_value = 1000000
+    cups_list = {}
+    
+    next_cup = nil
+    game_input.each_with_index do |cup, index|
+        next_cup = (index + 1) < game_input.length ? game_input[index + 1] : game_input.first
+        cups_list[cup] = { next: next_cup }
+    end
+    
     10000000.times do
-        game_input
-        current_cup = game_input.pop
-        pick_up_cups = game_input.pop(3)
+        pick_up_cups = []
+        pick_up_cups.push(cups_list[current_cup][:next])
+        pick_up_cups.push(cups_list[pick_up_cups[0]][:next])
+        pick_up_cups.push(cups_list[pick_up_cups[1]][:next])
+
         destination_cup = nil
         search_value = ((current_cup - 1) - 1) % max_value + 1
-        max_value.times do
-            if game_input.include?(search_value)
+        5.times do
+            unless pick_up_cups.include?(search_value) || search_value == current_cup
                 destination_cup = search_value
                 break
             end
             search_value = ((search_value - 1) - 1) % max_value + 1
         end
-        destination_index = (game_input.find_index(destination_cup)) % max_value
-        game_input.insert(destination_index, pick_up_cups[0], pick_up_cups[1], pick_up_cups[2])
-        game_input.unshift(current_cup)
+        placeholder_cup = cups_list[destination_cup][:next]
+        after_pick_up_cups = cups_list[pick_up_cups[2]][:next]
+
+        cups_list[current_cup][:next] = cups_list[pick_up_cups[2]][:next]
+        cups_list[destination_cup][:next] = pick_up_cups[0]
+        cups_list[pick_up_cups[2]][:next] = placeholder_cup
+        
+        current_cup = cups_list[current_cup][:next]
     end
 
-    index = game_input.find_index(1)
-    first_num = game_input[(index - 1) % max_value]
-    second_num = game_input[(index - 2) % max_value]
-    # p game_input
-    p first_num
-    p second_num
-    p first_num * second_num
-    # final_order = []
-    # (game_input.length - 1).times do
-    #     index = (index - 1) % max_value
-    #     final_order.push(game_input[index])
-    # end
-    # p final_order.join
+    prev_1_num = cups_list[1][:next]
+    prev_2_num = cups_list[prev_1_num][:next]
+
+    p prev_1_num * prev_2_num
+
 
 end
 
