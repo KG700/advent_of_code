@@ -1,0 +1,32 @@
+require_relative '../helper'
+include Helper
+
+instructions_data = Helper::upload("day-02/part-1-input.txt")
+
+def calculate_position instructions_data
+    
+    instructions_data.map! { |data| data.split(" ")}
+    
+    # p instructions_data
+
+    position = {"aim" => 0, "horizontal" => 0, "depth" => 0}
+    instructions_data.each do |data|
+        case data[0]
+        when "forward"
+            position["horizontal"] += data[1].to_i
+            position["depth"] += position["aim"] * data[1].to_i
+        when "down"
+            position["aim"] += data[1].to_i
+        when "up"
+            position["aim"] -= data[1].to_i
+        else
+            p "something else given"
+        end
+    end
+
+    p position
+    p position["horizontal"] * position["depth"]
+
+end
+
+calculate_position instructions_data
