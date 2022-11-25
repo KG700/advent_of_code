@@ -1,8 +1,8 @@
 require_relative '../helper'
 include Helper
 
-seqment_data = Helper::upload("day-08/part-1-input.txt")
-# seqment_test_data = Helper::upload("day-08/test-input.txt")
+seqment_data = Helper::upload("2021/day-08/part-1-input.txt")
+# seqment_test_data = Helper::upload("2021/day-08/test-input.txt")
 
 DIGITS = {
     "123567" => 0,

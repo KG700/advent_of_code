@@ -1,7 +1,7 @@
 require_relative '../helper'
 include Helper
 
-instructions_data = Helper::upload("day-02/part-1-input.txt")
+instructions_data = Helper::upload("2021/day-02/part-1-input.txt")
 
 def calculate_position instructions_data
     

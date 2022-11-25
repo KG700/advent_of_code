@@ -1,8 +1,8 @@
 require_relative '../helper'
 include Helper
 
-seqment_data = Helper::upload("day-08/part-1-input.txt")
-# seqment_test_data = Helper::upload("day-08/test-input.txt")
+seqment_data = Helper::upload("2021/day-08/part-1-input.txt")
+# seqment_test_data = Helper::upload("2021/day-08/test-input.txt")
 
 def count_seqments seqment_data
     seqment_data = seqment_data.map do |seq| 

@@ -1,8 +1,8 @@
 require_relative '../helper'
 include Helper
 
-crab_data = Helper::upload("day-07/part-1-input.txt")
-# crab_test_data = Helper::upload("day-07/test-input.txt")
+crab_data = Helper::upload("2021/day-07/part-1-input.txt")
+# crab_test_data = Helper::upload("2021/day-07/test-input.txt")
 
 def optimal_position crab_data
     crab_data = crab_data[0].split(",").map(&:to_i)

@@ -2,10 +2,10 @@ require 'set'
 require_relative '../helper'
 include Helper
 
-reboot_data = Helper::upload("day-22/input.txt")
-reboot_data_test_1 = Helper::upload("day-22/test-input-1.txt")
-reboot_data_test_2 = Helper::upload("day-22/test-input-2.txt")
-reboot_data_test_3 = Helper::upload("day-22/test-input-3.txt")
+reboot_data = Helper::upload("2021/day-22/input.txt")
+reboot_data_test_1 = Helper::upload("2021/day-22/test-input-1.txt")
+reboot_data_test_2 = Helper::upload("2021/day-22/test-input-2.txt")
+reboot_data_test_3 = Helper::upload("2021/day-22/test-input-3.txt")
 
 COORDS = ["x", "y", "z"]
 

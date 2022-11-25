@@ -1,8 +1,8 @@
 require_relative '../helper'
 include Helper
 
-code_data = Helper::upload("day-10/part-1-input.txt")
-code_test_data = Helper::upload("day-10/test-input.txt")
+code_data = Helper::upload("2021/day-10/part-1-input.txt")
+code_test_data = Helper::upload("2021/day-10/test-input.txt")
 
 SYNTAX_SCORES = { "(" => 1, "[" => 2, "{" => 3, "<" => 4, nil => 0 }
 

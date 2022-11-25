@@ -2,8 +2,8 @@ require "set"
 require_relative '../helper'
 include Helper
 
-polymer_data = Helper::upload("day-14/part-1-input.txt")
-polymer_test_data = Helper::upload("day-14/test-input.txt")
+polymer_data = Helper::upload("2021/day-14/part-1-input.txt")
+polymer_test_data = Helper::upload("2021/day-14/test-input.txt")
 
 def find_polymer polymer_data
     

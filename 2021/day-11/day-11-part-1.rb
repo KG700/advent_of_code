@@ -1,8 +1,8 @@
 require_relative '../helper'
 include Helper
 
-octapus_data = Helper::upload("day-11/part-1-input.txt")
-octapus_test_data = Helper::upload("day-11/test-input.txt")
+octapus_data = Helper::upload("2021/day-11/part-1-input.txt")
+octapus_test_data = Helper::upload("2021/day-11/test-input.txt")
 
 def simulate_lumination octapus_data
 

@@ -1,8 +1,8 @@
 require_relative '../helper'
 include Helper
 
-bingo_data = Helper::upload("day-04/part-1-input.txt")
-# bingo_test_data = Helper::upload("day-04/test-input.txt")
+bingo_data = Helper::upload("2021/day-04/part-1-input.txt")
+# bingo_test_data = Helper::upload("2021/day-04/test-input.txt")
 
 def find_winning_board bingo_data
 

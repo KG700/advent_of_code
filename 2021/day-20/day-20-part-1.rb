@@ -1,8 +1,8 @@
 require_relative '../helper'
 include Helper
 
-image_data = Helper::upload("day-20/input.txt")
-image_data_test = Helper::upload("day-20/test-input.txt")
+image_data = Helper::upload("2021/day-20/input.txt")
+image_data_test = Helper::upload("2021/day-20/test-input.txt")
 
 def scan_image image_data
 

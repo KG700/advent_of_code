@@ -1,8 +1,8 @@
 require_relative '../helper'
 include Helper
 
-monad_data = Helper::upload("day-24/input.txt")
-monad_data_test = Helper::upload("day-24/test-input.txt")
+monad_data = Helper::upload("2021/day-24/input.txt")
+monad_data_test = Helper::upload("2021/day-24/test-input.txt")
 
 def validate_model_number monad_data
     # p 0 % 26

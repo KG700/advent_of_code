@@ -1,7 +1,7 @@
 require 'set'
 
-code_data = File.read("day-13/part-1-input.txt")
-code_data_test = File.read("day-13/test-input.txt")
+code_data = File.read("2021/day-13/part-1-input.txt")
+code_data_test = File.read("2021/day-13/test-input.txt")
 
 def origami data
 

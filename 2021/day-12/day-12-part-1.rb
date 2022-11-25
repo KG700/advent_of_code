@@ -2,10 +2,10 @@ require "set"
 require_relative '../helper'
 include Helper
 
-path_data = Helper::upload("day-12/part-1-input.txt")
-path_test0_data = Helper::upload("day-12/test-input-0.txt")
-path_test1_data = Helper::upload("day-12/test-input-1.txt")
-path_test2_data = Helper::upload("day-12/test-input-2.txt")
+path_data = Helper::upload("2021/day-12/part-1-input.txt")
+path_test0_data = Helper::upload("2021/day-12/test-input-0.txt")
+path_test1_data = Helper::upload("2021/day-12/test-input-1.txt")
+path_test2_data = Helper::upload("2021/day-12/test-input-2.txt")
 
 def find_paths path_data
     path_nodes = Hash.new {|h,k| h[k] = []}

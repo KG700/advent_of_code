@@ -2,71 +2,48 @@ require 'set'
 require_relative '../helper'
 include Helper
 
-reboot_data = Helper::upload("day-22/input.txt")
-reboot_data_test_1 = Helper::upload("day-22/test-input-1.txt")
-reboot_data_test_2 = Helper::upload("day-22/test-input-2.txt")
-reboot_data_test_3 = Helper::upload("day-22/test-input-3.txt")
-reboot_data_test_4 = Helper::upload("day-22/test-input-4.txt")
+reboot_data = Helper::upload("2021/day-22/input.txt")
+reboot_data_test_1 = Helper::upload("2021/day-22/test-input-1.txt")
+reboot_data_test_2 = Helper::upload("2021/day-22/test-input-2.txt")
+reboot_data_test_3 = Helper::upload("2021/day-22/test-input-3.txt")
+reboot_data_test_4 = Helper::upload("2021/day-22/test-input-4.txt")
 
 COORDS = ["x", "y", "z"]
 
 def perform_reboot_steps reboot_data
     start = Time.now
-
     steps = reboot_data.map {|step| step.split(" ")}.map {|step| [step[0], step[1].split(",").map {|range| range[/[^=]*$/].split("..").map(&:to_i)}] }
-   
-    # cuboids = {range_list: []Ug, [x, y]: {range_list: [], [w,z]: {range_list: []}}}
     cuboids = {node: 'x', range_list: []}
 
-    # range_list = cuboids[:range_list] || []
     steps.reverse.each do |step|
-        # p step
        cuboids = update_cuboid(step, Helper::deep_copy(cuboids), 0)
-    #    p cuboids
-    #    p "-------"
     end
 
-    # p cuboids[:range_list]
     on_count = 0
-    # off_count = 0
     cuboids[:range_list].each do |x|
         x_count = x[1] - x[0] + 1
         cuboids[x][:range_list].each do |y|
             y_count = y[1] - y[0] + 1
             cuboids[x][y][:range_list].each do |z|
-                # p cuboids[x][y][z]
                 z_count = z[1] - z[0] + 1
                 if cuboids[x][y][z][:is_on]
                     on_count += (x_count * y_count * z_count)
-                # else
-                #     off_count += (x_count * y_count * z_count)
                 end
             end
         end
     end
 
     p on_count
-    # p off_count
 
 end
 
 def update_cuboid step, cuboids, node
-    # p "-----"
-    # p step[0] if node == 1
-    # p "node: #{node}"
-    # p "step: #{step[1][node]}"
-    # p cuboids
-    range_list = Helper::deep_copy(cuboids[:range_list])
-    # p "range_list: #{range_list}"
 
+    range_list = Helper::deep_copy(cuboids[:range_list])
     new_node = create_node(step, node)
-    # p "new z node: #{new_node}" if node == 2
-    # p "new y node: #{new_node}" if node == 1
-       
+
     if node < 2
         overlap_ranges, range_list = get_overlap_ranges(range_list, step[1][node])
-        # p range_list
-        # p "overlap_ranges #{overlap_ranges}"
 
         overlap_ranges.each do |range, info|
             saved_info = Helper::deep_copy(cuboids[range])
@@ -75,42 +52,20 @@ def update_cuboid step, cuboids, node
             update_cuboids = {}
                 updated_cuboids = update_cuboid(step, Helper::deep_copy(cuboids[info[:overlap]]), node + 1) 
                 cuboids[info[:overlap]] = updated_cuboids           
-            # else
-            #     info[:all_ranges].each {|range| cuboids[range] = {is_on: step[0] == 'on'} if range != info[:overlap]}
-            #     cuboids[info[:overlap]] = {is_on: step[0] == 'on'}
-            # p "z : #{cuboids}" if node == 2
-            # p "y : #{cuboids}" if node == 1
         end
     end
 
     no_overlap_ranges, range_list = get_no_overlap_ranges(Helper::deep_copy(range_list), step[1][node])
-    # p "after get_no_overlap_ranges"
-    # p range_list
-    # p "no_overlap_ranges #{no_overlap_ranges}"
-
 
     no_overlap_ranges.each do |range|
         cuboids[range] = Helper::deep_copy(new_node)
     end
 
     cuboids[:range_list] = Helper::deep_copy(range_list)
-    # p cuboids if node == 0
-    
-    # p "----"
     Helper::deep_copy(cuboids)
 end
 
-# 
-
-# def update_range_list list range
-#     return range if list.length == 0
-#     new_list = []
-#     new_list
-# end
-
 def create_node step, node
-    # z = {range_list: [step[1][2]], step[1][2] => {is_on: step[0] == 'on'}}
-    # return z if node == 2
     z = {is_on: step[0] == 'on'}
     return z if node == 2
     y = {node: 'z', range_list: [step[1][2]], step[1][2] => z }
@@ -120,8 +75,6 @@ def create_node step, node
 end
 
 def get_overlap_ranges list, new_range
-    # p "overlap range is: #{list}"
-    # p "new_range: #{new_range}"
     ranges = []
     overlap_ranges = {}
 
@@ -153,38 +106,24 @@ def get_overlap_ranges list, new_range
         all_ranges.each {|range| ranges.push(range)}
     end
 
-    # p "overlap_ranges: #{overlap_ranges}" 
-    # p "ranges: #{ranges}"
-    # p "-----"
-
     return [overlap_ranges, ranges]
 end
 
 def get_no_overlap_ranges list, new_range
-    # p "list is: #{list}"
-    # p "new_range: #{new_range}"
     ranges = []
     no_overlap_ranges = []
 
     sub_range = list.length > 0 ? [list[0][0], new_range[0]].min : new_range[0]
 
     list.each do |range|
-        # p "range is: #{range}"
         if sub_range > new_range[1]
-            # p 1
             ranges.push(range)
         elsif sub_range >= new_range[0]
-            # p 2
             if sub_range == range[0]
                 add_range = []
             elsif range[0] <= new_range[1]
-                # p 21
                 add_range = [sub_range, range[0] - 1]
-            # elsif sub_range < range[0] && sub_range <= new_range[1] && range[1]
-            #     p 22
-            #     add_range = [sub_range, new_range[1]]
             else
-                # p 22
                 add_range = [sub_range, new_range[1]]
             end
             no_overlap_ranges.push(add_range) if add_range.length > 0
@@ -193,42 +132,29 @@ def get_no_overlap_ranges list, new_range
             sub_range = range[1] + 1
         else
             if range[0] > new_range[1]
-                # p 31
                 add_range = new_range
             elsif range[0] > new_range[0]
-                # p 32
                 add_range = [new_range[0], range[0] - 1]
             else
-                # p 33
                 add_range = []
             end
             no_overlap_ranges.push(add_range) if add_range.length > 0
             ranges.push(add_range) if add_range.length > 0
             ranges.push(range)
             sub_range = range[1] + 1
-        # else
-        #     p 4
-        #     ranges.push(range)
-        #     sub_range = range[1] + 1
         end
     end
 
     if ranges.length == 0 || ranges.last[1] < new_range[1]
-        # p 5
         last_range = []
         if ranges.length == 0 || ranges.last[1] < new_range[0]
-            # p 51
             last_range = new_range
         else
-            # p 52
             last_range = [ranges.last[1] + 1, new_range[1]]
         end
         no_overlap_ranges.push(last_range)
         ranges.push(last_range)
     end
-    # p "no_overlap_ranges: #{no_overlap_ranges}" 
-    # p "ranges: #{ranges}"
-    # p "-----"
 
     return [no_overlap_ranges, ranges]
 end

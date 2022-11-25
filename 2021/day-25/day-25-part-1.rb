@@ -1,9 +1,9 @@
 require_relative '../helper'
 include Helper
 
-cucumber_data = Helper::upload("day-25/input.txt")
-cucumber_data_test = Helper::upload("day-25/test-input.txt")
-cucumber_data_test_basic = Helper::upload("day-25/test-input-basic.txt")
+cucumber_data = Helper::upload("2021/day-25/input.txt")
+cucumber_data_test = Helper::upload("2021/day-25/test-input.txt")
+cucumber_data_test_basic = Helper::upload("2021/day-25/test-input-basic.txt")
 
 class SeaFloor
 

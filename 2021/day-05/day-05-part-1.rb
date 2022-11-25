@@ -2,8 +2,8 @@ require 'set'
 require_relative '../helper'
 include Helper
 
-lines_data = Helper::upload("day-05/part-1-input.txt")
-# lines_test_data = Helper::upload("day-05/test-input.txt")
+lines_data = Helper::upload("2021/day-05/part-1-input.txt")
+# lines_test_data = Helper::upload("2021/day-05/test-input.txt")
 
 def find_overlapping_lines lines_data
 

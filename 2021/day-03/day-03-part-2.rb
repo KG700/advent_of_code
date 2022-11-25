@@ -1,7 +1,7 @@
 require_relative '../helper'
 include Helper
 
-binary_data = Helper::upload("day-03/part-1-input.txt")
+binary_data = Helper::upload("2021/day-03/part-1-input.txt")
 # binary_test_data = Helper::upload("day-03/test-input.txt")
 
 def calculate_life_support binary_data

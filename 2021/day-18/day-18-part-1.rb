@@ -3,7 +3,7 @@ require "json"
 require_relative '../helper'
 include Helper
 
-math_homework_test_1 = Helper::upload("day-18/part-1-input.txt")
+math_homework_test_1 = Helper::upload("2021/day-18/part-1-input.txt")
 
 def add_snail_pairs math_homework_data
 

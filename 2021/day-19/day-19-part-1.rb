@@ -2,9 +2,9 @@ require 'set'
 require_relative '../helper'
 include Helper
 
-beacon_data = Helper::upload("day-19/input.txt")
-beacon_data_test_1 = Helper::upload("day-19/test-input-1.txt")
-beacon_data_test_2 = Helper::upload("day-19/test-input-2.txt")
+beacon_data = Helper::upload("2021/day-19/input.txt")
+beacon_data_test_1 = Helper::upload("2021/day-19/test-input-1.txt")
+beacon_data_test_2 = Helper::upload("2021/day-19/test-input-2.txt")
 
 class Map
     attr_accessor :beacons

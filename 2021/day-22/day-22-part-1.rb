@@ -1,11 +1,11 @@
 require_relative '../helper'
 include Helper
 
-reboot_data = Helper::upload("day-22/input.txt")
-reboot_data_test_1 = Helper::upload("day-22/test-input-1.txt")
-reboot_data_test_2 = Helper::upload("day-22/test-input-2.txt")
+reboot_data = Helper::upload("2021/day-22/input.txt")
+reboot_data_test_1 = Helper::upload("2021/day-22/test-input-1.txt")
+reboot_data_test_2 = Helper::upload("2021/day-22/test-input-2.txt")
 
-reboot_data_test_4 = Helper::upload("day-22/test-input-4.txt")
+reboot_data_test_4 = Helper::upload("2021/day-22/test-input-4.txt")
 
 
 COORDS = ["x", "y", "z"]

@@ -1,7 +1,7 @@
 require_relative '../helper'
 include Helper
 
-depth_data = Helper::upload("day-01/part-1-input.txt")
+depth_data = Helper::upload("2021/day-01/part-1-input.txt")
 
 def calculate_increase_rate depth_data
     

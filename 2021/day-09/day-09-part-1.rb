@@ -1,8 +1,8 @@
 require_relative '../helper'
 include Helper
 
-lava_data = Helper::upload("day-09/part-1-input.txt")
-lava_test_data = Helper::upload("day-09/test-input.txt")
+lava_data = Helper::upload("2021/day-09/part-1-input.txt")
+lava_test_data = Helper::upload("2021/day-09/test-input.txt")
 
 def total_risk_level lava_data
     

@@ -2,8 +2,8 @@ require "set"
 require_relative '../helper'
 include Helper
 
-cave_data = Helper::upload("day-15/part-1-input.txt")
-cave_data_test = Helper::upload("day-15/test-input.txt")
+cave_data = Helper::upload("2021/day-15/part-1-input.txt")
+cave_data_test = Helper::upload("2021/day-15/test-input.txt")
 
 def shortest_path cave_data
     cave_data.map! {|cave| cave.split("")}

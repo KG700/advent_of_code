@@ -1,15 +1,15 @@
 require_relative '../helper'
 include Helper
 
-hex_data = Helper::upload("day-16/input.txt")
-hex_data_test_8 = Helper::upload("day-16/test-input-8.txt")
-hex_data_test_9 = Helper::upload("day-16/test-input-9.txt")
-hex_data_test_10 = Helper::upload("day-16/test-input-10.txt")
-hex_data_test_11 = Helper::upload("day-16/test-input-11.txt")
-hex_data_test_12 = Helper::upload("day-16/test-input-12.txt")
-hex_data_test_13 = Helper::upload("day-16/test-input-13.txt")
-hex_data_test_14 = Helper::upload("day-16/test-input-14.txt")
-hex_data_test_15 = Helper::upload("day-16/test-input-15.txt")
+hex_data = Helper::upload("2021/day-16/input.txt")
+hex_data_test_8 = Helper::upload("2021/day-16/test-input-8.txt")
+hex_data_test_9 = Helper::upload("2021/day-16/test-input-9.txt")
+hex_data_test_10 = Helper::upload("2021/day-16/test-input-10.txt")
+hex_data_test_11 = Helper::upload("2021/day-16/test-input-11.txt")
+hex_data_test_12 = Helper::upload("2021/day-16/test-input-12.txt")
+hex_data_test_13 = Helper::upload("2021/day-16/test-input-13.txt")
+hex_data_test_14 = Helper::upload("2021/day-16/test-input-14.txt")
+hex_data_test_15 = Helper::upload("2021/day-16/test-input-15.txt")
 
 HEX_TO_BIN = {
     "0" => "0000",
