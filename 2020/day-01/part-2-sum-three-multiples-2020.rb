@@ -1,7 +1,7 @@
 require_relative '../helper'
 include Helper
 
-expenses_data = Helper::upload("day-1/expenses-data.txt").map(&:to_i)
+expenses_data = Helper::upload("2020/day-01/expenses-data.txt").map(&:to_i)
 
 def multiples_of_2020(input_array)
     input_array.length.times do |first|  

@@ -109,7 +109,7 @@ def get_edge direction, c_max, r_max, c, r
     edge
 end
 
-seat_map = Helper::upload("day-11/seating-data.txt")
+seat_map = Helper::upload("2020/day-11/seating-data.txt")
 
 test_map = [
     "L.LL.LL.LL",

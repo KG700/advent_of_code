@@ -1,8 +1,8 @@
 require_relative '../helper'
 include Helper
 
-tile_data = File.read("day-20/tile-data.txt")
-test_data = File.read("day-20/test-data.txt")
+tile_data = File.read("2020/day-20/tile-data.txt")
+test_data = File.read("2020/day-20/test-data.txt")
 
 class Grid
     attr_reader :grid, :size

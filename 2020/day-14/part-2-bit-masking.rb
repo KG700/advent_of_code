@@ -7,7 +7,7 @@ test_data = [
     "mask = 00000000000000000000000000000000X0XX",
     "mem[26] = 1"
 ]
-mask_data = Helper::upload("day-14/bit-mask-data.txt")
+mask_data = Helper::upload("2020/day-14/bit-mask-data.txt")
 
 def sum_of_numbers_in_memory mask_data
     mask_data.map! { |data| data.split(" = ") }

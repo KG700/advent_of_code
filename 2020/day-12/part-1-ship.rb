@@ -29,7 +29,7 @@ def drive_ship navigation
     p position[0].abs + position[1].abs
 end
 
-nav_directions = Helper::upload("day-12/navigation-data.txt")
+nav_directions = Helper::upload("2020/day-12/navigation-data.txt")
 
 test_nav = [
     "F10",

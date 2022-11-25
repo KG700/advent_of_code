@@ -3,7 +3,7 @@ require_relative '../helper'
 include Helper
 
 def first_loop_accumulator
-    commands_data = Helper::upload("day-8/game-commands-data.txt")
+    commands_data = Helper::upload("2020/day-08/game-commands-data.txt")
     commands = commands_data.map { |command| command.split(" ")}
     commands_clone = commands[0..-1]
     

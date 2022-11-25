@@ -1,7 +1,7 @@
 require_relative '../helper'
 include Helper
 
-cube_data = Helper::upload("day-17/starting-cube.txt")
+cube_data = Helper::upload("2020/day-17/starting-cube.txt")
 test_data = [
     ".#.",
     "..#",

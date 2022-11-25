@@ -3,7 +3,7 @@ require_relative '../helper'
 include Helper
 
 def number_of_outer_bags
-    bags_data = Helper::upload("day-7/bag-data.txt")
+    bags_data = Helper::upload("2020/day-07/bag-data.txt")
     bags_data.map! { |bag| bag.tr(".", "").split(" contain ").map! { |b| b.split(",").map! { |el| el.split(" ") } } }
     inner_bags = create_inner_bags_hash bags_data
     bags_set = find_bags(inner_bags, "shiny-gold", Set.new())

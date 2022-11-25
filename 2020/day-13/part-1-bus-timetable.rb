@@ -2,7 +2,7 @@ require_relative '../helper'
 include Helper
 
 test_numbers = ["939","7,13,x,x,59,x,31,19"]
-bus_numbers = Helper::upload("day-13/bus-data.txt")
+bus_numbers = Helper::upload("2020/day-13/bus-data.txt")
 # p bus_numbers
 
 def next_bus buses

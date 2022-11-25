@@ -51,7 +51,7 @@ def adjacent_seats r, c, map
     return seats
 end
 
-seat_map = Helper::upload("day-11/seating-data.txt")
+seat_map = Helper::upload("2020/day-11/seating-data.txt")
 
 test_map = [
     "L.LL.LL.LL",

@@ -8,7 +8,7 @@ test_4_numbers = ["939","67,x,7,59,61"] # 779210
 test_5_numbers = ["939","67,7,x,59,61"] # 1261476
 test_6_numbers = ["939","1789,37,47,1889"] # 1202161486
 
-bus_numbers = Helper::upload("day-13/bus-data.txt")
+bus_numbers = Helper::upload("2020/day-13/bus-data.txt")
 
 def find_timestamp_brute_force buses
     bus_numbers = []

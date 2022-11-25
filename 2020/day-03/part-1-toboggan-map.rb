@@ -2,7 +2,7 @@ require_relative '../helper'
 include Helper
 
 def travel_route
-    the_map = Helper::upload("day-3/part-1-map.txt")
+    the_map = Helper::upload("2020/day-03/part-1-map.txt")
     x_pos = 0
     tree_count = 0
     the_map.map do |row| 

@@ -3,7 +3,7 @@ require_relative '../helper'
 include Helper
 
 def number_of_yes_answers
-    yes_data = Helper::upload("day-6/yes-data.txt")
+    yes_data = Helper::upload("2020/day-06/yes-data.txt")
     yes_group = []
 
     group_set = Set.new()

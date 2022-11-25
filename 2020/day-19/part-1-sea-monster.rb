@@ -2,7 +2,7 @@ require 'set'
 require_relative '../helper'
 include Helper
 
-code_data = Helper::upload("day-19/code-data.txt")
+code_data = Helper::upload("2020/day-19/code-data.txt")
 test_1_data = [
     '0: 1 2',
     '1: "a"',

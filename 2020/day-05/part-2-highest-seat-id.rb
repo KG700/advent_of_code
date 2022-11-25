@@ -47,7 +47,7 @@ class Seat
 end
 
 def highest_seat_id
-    seats = upload("day-5/seat-data.txt")
+    seats = upload("2020/day-05/seat-data.txt")
 
     seats.map! { |seat| Seat.new(seat) }
     max_id = 0
@@ -60,7 +60,7 @@ def highest_seat_id
 end
 
 def find_my_seat
-    seats = Helper::upload("day-5/seat-data.txt")
+    seats = Helper::upload("2020/day-05/seat-data.txt")
     all_seat_ids = (1..1023).to_a
     seats.map! { |seat| Seat.new(seat) }
 

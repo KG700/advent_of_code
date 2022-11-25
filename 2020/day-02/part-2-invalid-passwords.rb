@@ -1,7 +1,7 @@
 require_relative '../helper'
 include Helper
 
-file_data = Helper::upload("day-2/input-passwords.txt")
+file_data = Helper::upload("2020/day-02/input-passwords.txt")
 
 counter = 0
 

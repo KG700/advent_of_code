@@ -1,8 +1,8 @@
 require_relative '../helper'
 include Helper
 
-test_data = File.read("day-22/test-data.txt")
-cards_data = File.read("day-22/moves-data.txt")
+test_data = File.read("2020/day-22/test-data.txt")
+cards_data = File.read("2020/day-22/moves-data.txt")
 
 def space_cards cards_data
     player_1, player_2 = cards_data.split(/\n\n/)

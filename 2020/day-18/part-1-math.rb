@@ -1,8 +1,8 @@
 require_relative '../helper'
 include Helper
 
-homework_data = Helper::upload("day-18/homework-data.txt")
-test_data = Helper::upload("day-18/test-data.txt")
+homework_data = Helper::upload("2020/day-18/homework-data.txt")
+test_data = Helper::upload("2020/day-18/test-data.txt")
 
 def do_homework exercises
     answers = []

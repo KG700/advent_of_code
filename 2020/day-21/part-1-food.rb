@@ -2,8 +2,8 @@ require 'set'
 require_relative '../helper'
 include Helper
 
-test_data = Helper::upload("day-21/test-data.txt")
-food_data = Helper::upload("day-21/food-data.txt")
+test_data = Helper::upload("2020/day-21/test-data.txt")
+food_data = Helper::upload("2020/day-21/food-data.txt")
 
 def find_food_without_allergens data
     foods = []

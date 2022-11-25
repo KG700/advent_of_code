@@ -7,7 +7,7 @@ def multiplied_trees
 end
 
 def travel_route(right, down)
-    the_map = Helper::upload("day-3/part-1-map.txt")
+    the_map = Helper::upload("2020/day-03/part-1-map.txt")
     x_pos = 0
     tree_count = 0
     the_map.each_with_index.map do |row, index|

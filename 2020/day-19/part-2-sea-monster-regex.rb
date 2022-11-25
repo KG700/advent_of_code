@@ -1,9 +1,9 @@
 require_relative '../helper'
 include Helper
 
-code_data = File.read("day-19/code-data.txt")
-test_1_data = File.read("day-19/part-1-test-1-data.txt")
-test_2_data = File.read("day-19/part-1-test-2-data.txt")
+code_data = File.read("2020/day-19/code-data.txt")
+test_1_data = File.read("2020/day-19/part-1-test-1-data.txt")
+test_2_data = File.read("2020/day-19/part-1-test-2-data.txt")
 
 def sea_monster data
     input_rules = {}

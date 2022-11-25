@@ -1,8 +1,8 @@
 require_relative '../helper'
 include Helper
 
-test_data = Helper::upload("day-24/test-data.txt")
-instructions_data = Helper::upload("day-24/instructions-data.txt")
+test_data = Helper::upload("2020/day-24/test-data.txt")
+instructions_data = Helper::upload("2020/day-24/instructions-data.txt")
 
 INSTRUCTIONS = ["se", "sw", "ne", "nw", "e", "w"]
 PAIRS = [["nw", "se"], ["sw", "ne"], ["w", "e"]]

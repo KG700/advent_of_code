@@ -1,7 +1,7 @@
 require_relative '../helper'
 include Helper
 
-ticket_data = Helper::upload("day-16/ticket-data.txt")
+ticket_data = Helper::upload("2020/day-16/ticket-data.txt")
 test_data = [
     "class: 0-1 or 4-19",
     "row: 0-5 or 8-19",

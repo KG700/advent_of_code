@@ -82,7 +82,7 @@ class Passport
 end
 
 def count_valid_passports
-    passport_data = Helper::upload("day-4/passport_data.txt")
+    passport_data = Helper::upload("2020/day-04/passport_data.txt")
 
     # Create array of passport objects
     passport_list = []
