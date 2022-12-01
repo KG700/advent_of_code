@@ -6,16 +6,13 @@ data_test = Helper::upload("2022/day-01/input-test.txt")
 
 def calculate data
     max_elf = 0
-    elf = []
-    data.each do |calorie|
-        if (calorie.empty?)
-            max_elf = [elf.sum, max_elf].max
-            elf = []
-        else
-            elf.push(calorie.to_i)
-        end
+    elf = 0
+    data.each do |calories|
+        elf += calories.empty? ? 0 : calories.to_i
+        max_elf = [elf, max_elf].max if calories.empty?
+        elf = 0  if calories.empty?
     end
-    max_elf = [elf.sum, max_elf].max
+    max_elf = [elf, max_elf].max
     p max_elf
 end
 

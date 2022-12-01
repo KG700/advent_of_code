@@ -5,21 +5,15 @@ data = Helper::upload("2022/day-01/input.txt")
 data_test = Helper::upload("2022/day-01/input-test.txt")
 
 def calculate data
-    max_elf = 0
     elves = []
-    elf = []
-    data.each do |calorie|
-        if (calorie.empty?)
-            elves.push(elf.sum)
-            elf = []
-        else
-            elf.push(calorie.to_i)
-        end
+    elf = 0
+    data.each do |calories|
+        elf += calories.empty? ? 0 : calories.to_i
+        elves.push(elf) if calories.empty?
+        elf = 0  if calories.empty?
     end
-    elves.push(elf.sum)
-
-    sorted_elves = elves.sort.reverse
-    p sorted_elves[0..2].sum
+    elves.push(elf)
+    p elves.sort.reverse[0..2].sum
 end
 
 calculate data
