@@ -6,8 +6,8 @@ data_test = Helper::upload("2022/day-02/input-test.txt")
 
 SCORING = {'rock' => 1, 'paper' => 2, 'scissors' => 3}
 SHAPE_MAP = {'A' => 'rock', 'B' => 'paper', 'C' => 'scissors'}
-MOVE_TO_LOSE = {'rock' => 'scissors', 'scissors' => 'paper', 'paper' => 'rock'}
 MOVE_TO_WIN = {'scissors' => 'rock', 'paper' => 'scissors', 'rock' => 'paper'}
+MOVE_TO_LOSE = MOVE_TO_WIN.invert
 
 def tournament data
     score = data.reduce(0) do |score, round|
