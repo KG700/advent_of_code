@@ -6,8 +6,8 @@ data_test = Helper::upload("2022/day-02/input-test.txt")
 
 SCORING = {'rock' => 1, 'paper' => 2, 'scissors' => 3}
 SHAPE_MAP = {'A' => 'rock', 'B' => 'paper', 'C' => 'scissors'}
-MOVE_TO_WIN = {'scissors' => 'rock', 'paper' => 'scissors', 'rock' => 'paper'}
-MOVE_TO_LOSE = MOVE_TO_WIN.invert
+SHAPE_TO_WIN = {'scissors' => 'rock', 'paper' => 'scissors', 'rock' => 'paper'}
+SHAPE_TO_LOSE = SHAPE_TO_WIN.invert
 
 def tournament data
     score = data.reduce(0) do |score, round|
@@ -25,11 +25,11 @@ def get_next_move round
     reindeers_move = SHAPE_MAP[round[0]]
     case round[-1]
         when 'X'
-            return MOVE_TO_LOSE[reindeers_move] 
+            return SHAPE_TO_LOSE[reindeers_move] 
         when 'Y'
             return reindeers_move
         when 'Z'
-            return MOVE_TO_WIN[reindeers_move]
+            return SHAPE_TO_WIN[reindeers_move]
         else
             throw "Error"
     end
