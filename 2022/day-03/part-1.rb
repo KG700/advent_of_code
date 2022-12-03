@@ -1,4 +1,3 @@
-require 'set'
 require_relative '../helper'
 include Helper
 
@@ -8,10 +7,10 @@ data_test = Helper::upload("2022/day-03/input-test.txt")
 def calculate data
     sum_of_priorities = data.reduce(0) do |sum, items|
         half = items.length / 2
-        first_compartment = items[0...half].split("").to_set
-        second_compartment = items[half..-1].split("").to_set
+        first_compartment = items[0...half].split("")
+        second_compartment = items[half..-1].split("")
         common_item = first_compartment & second_compartment
-        sum += get_priority common_item.to_a[0]
+        sum += get_priority common_item[0]
     end
     p sum_of_priorities
 end
