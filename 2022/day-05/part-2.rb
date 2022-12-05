@@ -18,8 +18,8 @@ def calculate data
         move, from, to = step.scan(/move (.*) from (.*) to (.*)/).first
         crates_to_move = stacks[from].pop(move.to_i)
         stacks[to].push(crates_to_move).flatten!
-
     end
+    
     top_of_stacks = ""
     stacks.each { |label, stack| top_of_stacks += stack.last }
     p top_of_stacks

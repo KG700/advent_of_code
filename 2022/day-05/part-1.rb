@@ -21,6 +21,7 @@ def calculate data
             stacks[to].push(crate_to_move)
         end
     end
+    
     top_of_stacks = ""
     stacks.each { |label, stack| top_of_stacks += stack.last }
     p top_of_stacks
