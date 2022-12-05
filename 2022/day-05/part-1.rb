@@ -5,8 +5,8 @@ data = Helper::upload_line_break("2022/day-05/input.txt")
 data_test = Helper::upload_line_break("2022/day-05/input-test.txt")
 
 def calculate data
-    data.map! { |section| section.split(/\n/) }
-    labels, *crates = data[0].reverse
+    creates_map, steps = data.map { |section| section.split(/\n/) }
+    labels, *crates = creates_map.reverse
     stacks = {}
 
     (1..labels.length).step(4) do |i|
@@ -14,7 +14,7 @@ def calculate data
         crates.each { |crate| stacks[labels[i]].push(crate[i]) unless crate[i] == " " }
     end
 
-    data[1].each do |step|
+    steps.each do |step|
         move, from, to = step.scan(/move (.*) from (.*) to (.*)/).first
         move.to_i.times do |crate|
             crate_to_move = stacks[from].pop()
