@@ -15,11 +15,8 @@ def calculate data
     end
 
     data[1].each do |step|
-        steps_split = step.split(" ")
-        move = steps_split[1].to_i
-        from = steps_split[3]
-        to = steps_split[5]
-        move.times do |crate|
+        move, from, to = step.scan(/move (.*) from (.*) to (.*)/).first
+        move.to_i.times do |crate|
             crate_to_move = stacks[from].pop()
             stacks[to].push(crate_to_move)
         end

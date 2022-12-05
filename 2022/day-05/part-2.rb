@@ -15,11 +15,8 @@ def calculate data
     end
 
     data[1].each do |step|
-        steps_split = step.split(" ")
-        move = steps_split[1].to_i
-        from = steps_split[3]
-        to = steps_split[5]
-        crates_to_move = stacks[from].pop(move)
+        move, from, to = step.scan(/move (.*) from (.*) to (.*)/).first
+        crates_to_move = stacks[from].pop(move.to_i)
         stacks[to].push(crates_to_move).flatten!
 
     end
@@ -29,4 +26,4 @@ def calculate data
 
 end
 
-calculate data_test
+calculate data
