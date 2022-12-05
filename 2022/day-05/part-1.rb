@@ -10,20 +10,21 @@ def calculate data
     stacks = {}
 
     (1..labels.length).step(4) do |i|
-        stacks[labels[i]] = []
-        crates.each { |crate| stacks[labels[i]].push(crate[i]) unless crate[i] == " " }
+        stacks[labels[i]] = ""
+        crates.each { |crate| stacks[labels[i]] += crate[i] unless crate[i] == " " }
     end
 
     steps.each do |step|
         move, from, to = step.scan(/move (.*) from (.*) to (.*)/).first
+
         move.to_i.times do |crate|
-            crate_to_move = stacks[from].pop()
-            stacks[to].push(crate_to_move)
+            crate_to_move = stacks[from].slice!(-1)
+            stacks[to] += crate_to_move
         end
     end
-    
+
     top_of_stacks = ""
-    stacks.each { |label, stack| top_of_stacks += stack.last }
+    stacks.each { |label, stack| top_of_stacks += stack[-1] }
     p top_of_stacks
 
 end
