@@ -7,14 +7,14 @@ data_test = Helper::upload("2022/day-06/input-test.txt")
 UNIQUE_NUMBER = 14
 
 def calculate datastream
-    start_of_packet = 0
+    start_of_message = 0
     ((UNIQUE_NUMBER - 1)..datastream.length).each do |i|
         unique_characters = datastream[(i - UNIQUE_NUMBER + 1)..i].chars.to_a.uniq
-        start_of_packet = i + 1 if unique_characters.length == UNIQUE_NUMBER
-        break unless start_of_packet.zero?
+        start_of_message = i + 1 if unique_characters.length == UNIQUE_NUMBER
+        break unless start_of_message.zero?
     end
 
-    p start_of_packet
+    p start_of_message
 end
 
 def run_test_examples data_test
