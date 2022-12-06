@@ -4,13 +4,13 @@ include Helper
 data = Helper::upload("2022/day-06/input.txt")
 data_test = Helper::upload("2022/day-06/input-test.txt")
 
-UNIQUE_POSITION = 4
+UNIQUE_NUMBER = 4
 
 def calculate datastream
     start_of_packet = 0
-    ((UNIQUE_POSITION - 1)..datastream.length).each do |i|
-        unique_characters = datastream[(i - UNIQUE_POSITION + 1)..i].chars.to_a.uniq
-        start_of_packet = i + 1 if unique_characters.length == UNIQUE_POSITION
+    ((UNIQUE_NUMBER - 1)..datastream.length).each do |i|
+        unique_characters = datastream[(i - UNIQUE_NUMBER + 1)..i].chars.to_a.uniq
+        start_of_packet = i + 1 if unique_characters.length == UNIQUE_NUMBER
         break unless start_of_packet.zero?
     end
 
