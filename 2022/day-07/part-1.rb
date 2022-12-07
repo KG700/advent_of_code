@@ -33,12 +33,12 @@ class Directory
     end
 
     def get_all_sub_directories
-        all_directories = @sub_directories.reduce([]) do |all_directories, name|
+        @sub_directories.reduce([]) do |all_directories, name|
             directory = @items[name]
             all_directories.push(directory)
             directory.get_all_sub_directories.each { |sub_directory| all_directories.push(sub_directory) }
+            all_directories
         end
-        all_directories
     end
 
 end
@@ -70,7 +70,6 @@ def calculate data
                 else
                     current_directory = current_directory.items[name]
                 end
-                current_directory = current_directory
             end
         else
             info, name = line.split(' ')
