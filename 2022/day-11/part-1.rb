@@ -44,22 +44,14 @@ def calculate monkeys
         new_monkey = Monkey.new(items, operation, divisible_test, monkey_to_throw_to)
     end
 
-    1000.times do |round|
-        # p "round: #{round}"
+    20.times do |round|
 
         monkeys.each do |monkey|
-            # p "items: #{monkey.items}"
             (monkey.items.length).times do |i|
                 monkey.item_count += 1
                 item = monkey.items.shift
                 item = monkey.do_operation item
-                # item /= 3
-                # p "doing divisible test"
-                # p item
-                # p monkey.divisible_test
                 is_divisible = item % monkey.divisible_test == 0
-                # p is_divisible
-                # p is_divisible
                 monkey_to_throw_to = monkeys[monkey.monkey_to_throw_to[is_divisible]]
                 monkey.throw_to(monkey_to_throw_to, item)
             end
@@ -68,7 +60,6 @@ def calculate monkeys
 
     handled_items = []
     monkeys.map { |monkey| handled_items.push(monkey.item_count) }
-    # p monkeys
     p handled_items.sort.reverse[0..1].inject(:*)
     p handled_items
 end
